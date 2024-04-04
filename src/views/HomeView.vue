@@ -9,60 +9,63 @@
         <v-toolbar-title>Sandali Singh</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-tabs>
-          <v-tab
-            ><a href="#about" @click="scrollToSection('#about')"
-              >About</a
-            ></v-tab
-          >
-          <v-tab
-            ><a href="#teck" @click="scrollToSection('#teck')"
-              >Technologies</a
-            ></v-tab
-          >
+          <!-- <v-tab><a href="#about">About</a></v-tab>
+          <v-tab><a href="#teck">Technologies</a></v-tab>
           <v-tab><a href="#projects">Project</a></v-tab>
-          <v-tab><a href="#experience">Experience</a></v-tab>
+          <v-tab><a href="#experience">Experience</a></v-tab> -->
+          <v-tab><a @click="scrollToSection('about')">About</a></v-tab>
+          <v-tab><a @click="scrollToSection('teck')">Technologies</a></v-tab>
+          <v-tab><a @click="scrollToSection('projects')">Projects</a></v-tab>
+          <v-tab
+            ><a @click="scrollToSection('experience')">Experience</a></v-tab
+          >
         </v-tabs>
         <v-btn rounded class="action_btn">
-          <span><a href="#connect">Hire me! </a></span></v-btn
-        >
+          <span
+            ><a @click="scrollToSection('hire')" class="white--text"
+              >Hire me!
+            </a></span
+          >
+        </v-btn>
       </v-app-bar>
       <v-row class="section1" id="home">
         <v-col col="12" md="12" sm="12">
-          <v-container>
-            <h4>
-              Hola amigos! <br />
-              I’m Sandali Singh a techy &
-            </h4>
-            <div class="greetings">
-              <v-img
-                src="../assets/images/Group 6385.webp"
-                alt="Greetings-image"
-                max-height="800"
-                max-width="700"
-              ></v-img>
-            </div>
-            <p class="green-light">
-              <a href="/">
-                <v-btn rounded class="action_btn">
-                  <span>Hire me! </span></v-btn
-                > </a
-              >&nbsp;&nbsp; &nbsp; Know more about me
-              <v-icon small class="green-light">mdi-arrow-right</v-icon>
-            </p>
+          <h4>
+            Hola amigos! <br />
+            I’m Sandali Singh a techy &
+          </h4>
+          <div class="greetings">
             <v-img
-              class="profile-img"
-              src="../assets/images/Group 5803.webp"
-              alt="profile image"
-              max-height="1000"
-              max-width="1000"
+              src="../assets/images/Group 6385.webp"
+              alt="Greetings-image"
+              max-height="800"
+              max-width="700"
             ></v-img>
-          </v-container>
+          </div>
+          <p class="green-light">
+            <v-btn rounded class="action_btn">
+              <span
+                ><a @click="scrollToSection('hire')" class="white--text"
+                  >Hire me!
+                </a></span
+              >
+            </v-btn>
+            &nbsp;&nbsp; &nbsp; Know more about me
+            <v-icon small class="green-light">mdi-arrow-right</v-icon>
+          </p>
+          <v-img
+            class="profile-img"
+            src="../assets/images/Group 5803.webp"
+            alt="profile image"
+            max-height="1000"
+            max-width="1000"
+          ></v-img>
         </v-col>
       </v-row>
 
       <v-row class="section2" id="about">
         <v-col col="12" md="12" sm="12">
-          <v-container>
+          <v-container class="blue">
             <p class="mt-15 pt-15">
               Welcome to my digital realm! I'm Sandali singh, a freshly minted
               MCA graduate, fueled by curiosity and driven by innovation,with a
@@ -102,7 +105,7 @@
       </v-row>
       <v-row class="section3" id="teck">
         <v-col col="12" md="12" sm="12">
-          <v-container class="teck-block align-center mt-10">
+          <v-container class="teck-block align-center mt-10 green">
             <p class="green-dark">Technologies, I’m working with</p>
             <h2 class="mb-5">Got a tech challenge? I code the answer.</h2>
             <div class="teck-stack">
@@ -289,7 +292,7 @@
       </v-row>
       <v-row class="section4" id="projects">
         <v-col col="12" md="12" sm="12">
-          <v-container class="mt-15">
+          <v-container class="mt-15 pink">
             <p class="green-dark">Projects</p>
             <h2>I Build Magical products (Like this Website)</h2>
             <div class="cards">
@@ -318,7 +321,7 @@
       </v-row>
       <v-row class="section5" id="experience">
         <v-col col="12" md="12" sm="12">
-          <v-container>
+          <v-container class="red">
             <p class="green-dark">Experiences</p>
             <h2>Life is all about Experiences, Isn't it?</h2>
             <div class="experience-box">
@@ -327,19 +330,21 @@
               <v-spacer></v-spacer>
               <p class="mt-4">January 2024 - Current</p>
             </div>
-            <v-img
-              class="ma-3"
-              src="../assets/images/Group-img.webp"
-              alt="group image"
-              max-height="auto"
-              max-width="1024"
-            ></v-img>
+            <div class="group-img">
+              <v-img
+                class="ma-3"
+                src="../assets/images/Group-img.webp"
+                alt="group image"
+                max-height="auto"
+                max-width="1024"
+              ></v-img>
+            </div>
           </v-container>
         </v-col>
       </v-row>
-      <v-row class="section6" id="connect">
+      <v-row class="section6" id="hire">
         <v-col col="12" md="12" sm="12">
-          <v-container>
+          <v-container class="yellow">
             <p class="green-light-bold">Let’s Connect</p>
             <h2 class="green-light-big">Hire me to code your Vision</h2>
 
@@ -385,7 +390,7 @@
               <v-btn
                 rounded
                 :disabled="!valid"
-                class="action_btn mr-4 white--text"
+                class="action_btn mr-4"
                 @click="submit"
                 :loading="loading"
               >
@@ -395,21 +400,57 @@
           </v-container>
         </v-col>
       </v-row>
+      <v-row class="section7" id="connect">
+        <v-col col="12" md="6" sm="12">
+          <p>Sandali Singh - 2024</p>
+        </v-col>
+        <v-col col="12" md="6" sm="12">
+          <span class="mb-10 connect">
+            <a href="https://www.linkedin.com/in/sandali-singh-3095b91a3/">
+              <v-icon color="black">mdi-linkedin</v-icon>
+            </a>
+            <a href="https://twitter.com/_Sandali_Singh_">
+              <v-icon color="black">mdi-twitter</v-icon>
+            </a>
+            <a href="/">
+              <v-icon color="black">mdi-instagram</v-icon>
+            </a>
+            <a href="mailto: sandalisingh1270@gmail.com">
+              <v-icon color="black">mdi-email</v-icon>
+            </a>
+            <a href="https://github.com/sandali-singh">
+              <v-icon color="black">mdi-github</v-icon>
+            </a>
+          </span>
+          <div
+            class="scroll-to-top"
+            @click="scrollToTop"
+            v-show="showScrollButton"
+          >
+            <v-btn dark fab small>
+              <v-icon small>mdi-arrow-up</v-icon>
+            </v-btn>
+          </div>
+        </v-col>
+      </v-row>
     </v-container-fluid>
   </v-main>
 </template>
 
 <script>
+// import { db } from "@/fb";
+// import { onSnapshot, collection } from "firebase/firestore";
 import { addData } from "@/services/app.serviceAdd";
 
 export default {
   name: "HomePage",
   data: () => ({
+    showScrollButton: false,
     valid: true,
     name: "",
     nameRules: [
       (v) => !!v || "Name is required",
-      (v) => (v && v.length <= 10) || "Name must be less than 10 characters",
+      (v) => (v && v.length <= 25) || "Name must be less than 25 characters",
     ],
     email: "",
     emailRules: [
@@ -420,7 +461,7 @@ export default {
     messageRules: [
       (v) => !!v || "message is required",
       (v) =>
-        (v && v.length <= 200) || "message must be less than 200 characters",
+        (v && v.length <= 350) || "message must be less than 350 characters",
     ],
     cardData1: [
       {
@@ -461,9 +502,39 @@ export default {
       },
     ],
   }),
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
   methods: {
-    scrollToSection(sectionId) {
-      document.querySelector(sectionId).scrollIntoView({ behavior: "smooth" });
+    scrollToSection(section) {
+      let targetElement;
+      if (section === "about") {
+        targetElement = document.getElementById("about");
+      } else if (section === "teck") {
+        targetElement = document.getElementById("teck");
+      } else if (section === "projects") {
+        targetElement = document.getElementById("projects");
+      } else if (section === "experience") {
+        targetElement = document.getElementById("experience");
+      } else if (section === "hire") {
+        targetElement = document.getElementById("hire");
+      }
+
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    },
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    },
+    handleScroll() {
+      this.showScrollButton = window.scrollY > 100; // Change 100 to the scroll position you want
     },
     submit() {
       if (this.$refs.form.validate()) {
@@ -505,31 +576,35 @@ export default {
 body {
   scroll-behavior: smooth;
 }
+.scroll-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 3%;
+  transform: translateX(-50%);
+  display: block;
+}
+div.container {
+  text-align: center;
+  max-width: 70%;
+}
+.section4 div.container {
+  text-align: center;
+  max-width: 60%;
+}
+
+.section6 div.container {
+  text-align: center;
+  max-width: 65%;
+}
 .row {
   text-align: center;
 }
-a:link,
-a:active {
+
+.v-application a {
   color: #000;
   font-size: 0.8rem;
 }
-a:visited {
-  color: #000;
-}
-a {
-  text-decoration: none;
-}
-.v-btn a:link,
-.v-btn a:active {
-  color: #fff;
-  font-size: 0.8rem;
-}
-.v-btn a:visited {
-  color: #fff;
-}
-.v-btn a {
-  text-decoration: none;
-}
+
 .v-app-bar {
   height: 64px;
   margin: auto;
@@ -578,7 +653,7 @@ h2 {
 .section1 {
   position: relative;
   margin-top: 5rem;
-  min-height: 25%;
+  min-height: 15%;
 }
 .section1 .greetings {
   display: flex;
@@ -592,11 +667,12 @@ h2 {
   padding: 7rem 0 3rem;
   min-height: 15%;
 }
+
 .profile-img {
   position: absolute;
   align-items: center;
   left: 50%;
-  transform: translate(-50%, 40%);
+  transform: translate(-50%, -0%);
 }
 .connect a {
   margin: 0.5rem;
@@ -664,6 +740,16 @@ h2 {
   padding: 0.5rem 2rem;
   margin: 3rem 5rem;
 }
+.section5 .group-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section6 {
+  background-color: #fff;
+  border-top-left-radius: 5rem;
+  border-top-right-radius: 5rem;
+}
 .teck-block img {
   margin: 1rem;
 }
@@ -678,5 +764,9 @@ form.v-form .row {
 }
 .theme--light.v-btn.v-btn--disabled {
   color: #fff;
+}
+.section7 {
+  background-color: #dce7ce;
+  padding: 1rem;
 }
 </style>
