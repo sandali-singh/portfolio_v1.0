@@ -38,27 +38,36 @@
             <v-img
               src="../assets/images/Group 6385.webp"
               alt="Greetings-image"
-              max-height="800"
+              height="auto"
               max-width="700"
             ></v-img>
           </div>
-          <p class="green-light">
-            <v-btn rounded class="action_btn">
-              <span
-                ><a @click="scrollToSection('hire')" class="white--text"
-                  >Hire me!
-                </a></span
-              >
-            </v-btn>
-            &nbsp;&nbsp; &nbsp; Know more about me
-            <v-icon small class="green-light">mdi-arrow-right</v-icon>
-          </p>
+          <div class="know-block">
+            <p class="green-light">
+              <v-btn rounded class="action_btn">
+                <span
+                  ><a @click="scrollToSection('hire')" class="white--text"
+                    >Hire me!
+                  </a></span
+                >
+              </v-btn>
+              &nbsp;&nbsp; &nbsp; Know more about me
+              <v-icon small class="green-light">mdi-arrow-right</v-icon>
+            </p>
+          </div>
           <v-img
-            class="profile-img"
-            src="../assets/images/Group 5803.webp"
+            class="profile-img1"
+            src="../assets/images/profile1.webp"
             alt="profile image"
             max-height="1000"
             max-width="1000"
+          ></v-img>
+          <v-img
+            class="profile-img2"
+            src="../assets/images/profile2.webp"
+            alt="profile image"
+            max-height="auto"
+            max-width="600"
           ></v-img>
         </v-col>
       </v-row>
@@ -325,8 +334,11 @@
             <p class="green-dark">Experiences</p>
             <h2>Life is all about Experiences, Isn't it?</h2>
             <div class="experience-box">
-              <h4 class="mr-6">Capzow</h4>
-              <p class="mt-4">SDE Intern</p>
+              <div class="box-1">
+                <h4 class="mr-6">Capzow</h4>
+                <p class="mt-4">SDE Intern</p>
+              </div>
+
               <v-spacer></v-spacer>
               <p class="mt-4">January 2024 - Current</p>
             </div>
@@ -445,6 +457,8 @@ import { addData } from "@/services/app.serviceAdd";
 export default {
   name: "HomePage",
   data: () => ({
+    // isSmallScreen: false,
+
     showScrollButton: false,
     valid: true,
     name: "",
@@ -504,6 +518,10 @@ export default {
   }),
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
+
+    // this.isSmallScreen = this.$vuetify.breakpoint.smAndDown;
+    // window.addEventListener("resize", this.updateScreenSize);
+    // console.log("Initial screen size:", this.isSmallScreen);
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -552,7 +570,14 @@ export default {
         });
       }
     },
+    // updateScreenSize() {
+    //   this.isSmallScreen = this.$vuetify.breakpoint.smAndDown;
+    //   console.log("Updated screen size:", this.isSmallScreen);
+    // },
   },
+  // beforeDestroy() {
+  //   window.removeEventListener("resize", this.updateScreenSize);
+  // },
   // created() {
   //   onSnapshot(collection(db, "Databook"), (snapshot) => {
   //     snapshot.docChanges().forEach((change) => {
@@ -578,7 +603,7 @@ body {
 }
 .scroll-to-top {
   position: fixed;
-  bottom: 28px;
+  bottom: 10%;
   right: 3%;
   transform: translateX(-50%);
   display: block;
@@ -661,6 +686,13 @@ h2 {
   justify-content: center;
   margin: 2rem 0 0;
 }
+.section1 div.know-block {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  margin: 2rem;
+}
 .section2 {
   border-radius: 5rem;
   background-color: #fff;
@@ -668,14 +700,21 @@ h2 {
   min-height: 15%;
 }
 
-.profile-img {
+.profile-img1 {
+  display: block;
   position: absolute;
-  align-items: center;
+  left: 50%;
+  transform: translate(-50%, -10%);
+}
+
+.profile-img2 {
+  display: none;
+  position: absolute;
   left: 50%;
   transform: translate(-50%, -0%);
 }
 .connect a {
-  margin: 0.5rem;
+  margin: 0.2rem;
 }
 .green-light {
   color: #3f682a;
@@ -729,9 +768,6 @@ h2 {
   color: #244633;
   font-weight: 600;
 }
-.cards .v-image__image .v-image__image--contain {
-  border-radius: 1rem;
-}
 .experience-box {
   border-radius: 1rem;
   background: #fff;
@@ -740,6 +776,12 @@ h2 {
   padding: 0.5rem 2rem;
   margin: 3rem 5rem;
 }
+.experience-box .box-1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .section5 .group-img {
   display: flex;
   justify-content: center;
@@ -768,5 +810,184 @@ form.v-form .row {
 .section7 {
   background-color: #dce7ce;
   padding: 1rem;
+}
+
+/*  ///////////////////// media query ////////////////   */
+
+@media screen and (max-width: 1560px) {
+  .section4 div.container {
+    max-width: 75%;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .section5 div.v-image.v-responsive.theme--light {
+    width: 800px;
+  }
+  .section1 div.v-image.v-responsive.profile-img1.theme--light {
+    width: 800px;
+  }
+  .v-application .mt-15 {
+    margin-top: 0 !important;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .greetings div.v-image.v-responsive.theme--light {
+    width: 500px;
+  }
+  .section1 div.v-image.v-responsive.profile-img1.theme--light {
+    width: 800px;
+  }
+
+  .section2 {
+    min-height: 0%;
+    padding: 2rem 0 3rem;
+  }
+  .section5 div.v-image.v-responsive.theme--light {
+    border-radius: 1rem;
+    height: 600px;
+    width: 800px;
+  }
+  .experience-box {
+    margin: 1.5rem 2rem;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .section1 div.v-image.v-responsive.profile-img1.theme--light {
+    width: 680px;
+  }
+  .section1 {
+    min-height: 10%;
+  }
+  .section5 div.v-image.v-responsive.theme--light {
+    width: 680px;
+    height: 400px;
+  }
+  .section4 div.mx-auto.v-card.v-sheet.theme--light {
+    min-width: 420px;
+  }
+  .experience-box {
+    padding: 0.5rem 1rem;
+    margin: 1rem 1.5rem;
+  }
+  .v-application .mt-15 {
+    margin-top: 40px !important;
+  }
+}
+@media screen and (max-width: 760px) {
+  .section1 div.v-image.v-responsive.profile-img1.theme--light {
+    width: 600px;
+  }
+}
+@media screen and (max-width: 680px) {
+  .greetings div.v-image.v-responsive.theme--light {
+    width: 400px;
+  }
+  .section1 {
+    min-height: 15%;
+  }
+  .section1 div.v-image.v-responsive.profile-img1.theme--light {
+    display: none;
+  }
+  .section1 .profile-img2 {
+    display: block;
+  }
+  .section2 {
+    min-height: 15%;
+    padding: 7rem 0 2rem;
+  }
+  .section5 div.v-image.v-responsive.theme--light {
+    width: 500px;
+    height: 350px;
+  }
+  .section4 div.container {
+    max-width: 80%;
+  }
+  .experience-box {
+    padding: 0.5rem 1rem 0;
+    margin: 1rem 0;
+  }
+  .experience-box .box-1 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .v-application .mr-6 {
+    margin-right: 0px !important;
+  }
+  .v-application .mt-4 {
+    margin-top: 0px !important;
+  }
+  .v-application .mt-15 {
+    margin-top: 20px !important;
+  }
+  h4 {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 520px) {
+  div.container {
+    max-width: 85%;
+  }
+  .section6 div.container {
+    max-width: 80%;
+  }
+  .greetings div.v-image.v-responsive.theme--light {
+    width: 280px;
+  }
+  .section5 div.v-image.v-responsive.theme--light {
+    width: 400px;
+    height: 300px;
+  }
+  .section4 div.mx-auto.v-card.v-sheet.theme--light {
+    min-width: 250px;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  .green-light-big {
+    font-size: 2rem;
+  }
+  .v-application .mt-15 {
+    margin-top: 50px !important;
+  }
+  .section1 div.know-block {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2rem;
+  }
+}
+@media screen and (max-width: 460px) {
+  .section4 div.container {
+    max-width: 90%;
+  }
+  .section4 div.mx-auto.v-card.v-sheet.theme--light {
+    min-width: 180px;
+  }
+  .section5 div.v-image.v-responsive.theme--light {
+    width: 350px;
+    height: 280px;
+  }
+  .green-light-bold {
+    font-size: 1rem;
+  }
+  .green-light-big {
+    font-size: 1.6rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 375px) {
+  .section5 div.v-image.v-responsive.theme--light {
+    width: 250px;
+    height: auto;
+  }
+  .v-application .mt-15 {
+    margin-top: 80px !important;
+  }
 }
 </style>
