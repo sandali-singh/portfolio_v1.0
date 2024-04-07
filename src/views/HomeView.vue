@@ -1,33 +1,58 @@
 <template>
   <v-main class="main">
     <v-container-fluid>
-      <v-snackbar v-model="snackbar" :timeout="4000" top color="grey">
-        <span>Awesome! Your message was send</span>
-        <v-btn text color="white" @click="snackbar = false">Close</v-btn>
-      </v-snackbar>
-      <v-app-bar class="px-2 mx-6 mt-5 mt-md-3 mx-md-auto">
-        <v-toolbar-title>Sandali Singh</v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-tabs>
-          <!-- <v-tab><a href="#about">About</a></v-tab>
-          <v-tab><a href="#teck">Technologies</a></v-tab>
-          <v-tab><a href="#projects">Project</a></v-tab>
-          <v-tab><a href="#experience">Experience</a></v-tab> -->
-          <v-tab><a @click="scrollToSection('about')">About</a></v-tab>
-          <v-tab><a @click="scrollToSection('teck')">Technologies</a></v-tab>
-          <v-tab><a @click="scrollToSection('projects')">Projects</a></v-tab>
-          <v-tab
-            ><a @click="scrollToSection('experience')">Experience</a></v-tab
-          >
-        </v-tabs>
-        <v-btn rounded class="action_btn">
-          <span
-            ><a @click="scrollToSection('hire')" class="white--text"
-              >Hire me!
-            </a></span
-          >
-        </v-btn>
-      </v-app-bar>
+      <nav>
+        <v-app-bar class="px-2 mx-6 mt-5 mt-md-3 mx-md-auto v-app-bar--fixed">
+          <v-toolbar-title>Sandali Singh</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-tabs class="visibility-item1">
+            <v-tab><a @click="scrollToSection('about')">About</a></v-tab>
+            <v-tab><a @click="scrollToSection('teck')">Technologies</a></v-tab>
+            <v-tab><a @click="scrollToSection('projects')">Projects</a></v-tab>
+            <v-tab
+              ><a @click="scrollToSection('experience')">Experience</a></v-tab
+            >
+          </v-tabs>
+          <v-btn rounded class="action_btn visibility-item2">
+            <span
+              ><a @click="scrollToSection('hire')" class="white--text"
+                >Hire me!
+              </a></span
+            >
+          </v-btn>
+
+          <!-- <v-menu offset-y transition="slide-x-transition" :rounded="rounded">
+            <template v-slot:activator="{ on, attrs }"> -->
+          <v-navigation-drawer v-model="drawer" class="primary">
+            <v-app-bar-nav-icon
+              @click.stop="drawer = !drawer"
+              v-bind="attrs"
+              v-on="on"
+              class="visibility-item3"
+            ></v-app-bar-nav-icon>
+            <!-- </template> -->
+            <v-list>
+              <v-list-item
+                v-for="link in links"
+                :key="link.text"
+                router
+                :to="link.route"
+              >
+                <v-list-item-icon>
+                  <v-icon class="white--text">{{ link.icon }}</v-icon>
+                </v-list-item-icon>
+                <v-list-item>
+                  <v-list-item-title>{{
+                    link.text
+                  }}</v-list-item-title> </v-list-item
+                >v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-navigation-drawer>
+
+          <!-- </v-menu> -->
+        </v-app-bar>
+      </nav>
       <v-row class="section1" id="home">
         <v-col col="12" md="12" sm="12">
           <h4>
@@ -43,15 +68,14 @@
             ></v-img>
           </div>
           <div class="know-block">
-            <p class="green-light">
-              <v-btn rounded class="action_btn">
-                <span
-                  ><a @click="scrollToSection('hire')" class="white--text"
-                    >Hire me!
-                  </a></span
-                >
-              </v-btn>
-              &nbsp;&nbsp; &nbsp; Know more about me
+            <v-btn rounded class="action_btn">
+              <a @click="scrollToSection('hire')" class="white--text"
+                >Hire me!
+              </a>
+            </v-btn>
+            &nbsp;&nbsp; &nbsp;
+            <p class="green-light pt-4">
+              Know more about me
               <v-icon small class="green-light">mdi-arrow-right</v-icon>
             </p>
           </div>
@@ -457,7 +481,15 @@ import { addData } from "@/services/app.serviceAdd";
 export default {
   name: "HomePage",
   data: () => ({
-    // isSmallScreen: false,
+    drawer: false,
+
+    links: [
+      { icon: "mdi-home", text: "Home", route: "/" },
+      { icon: "mdi-account", text: "About", route: "/projects" },
+      { icon: "mdi-account", text: "Technologies", route: "/team" },
+      { icon: "mdi-account", text: "Projects", route: "/team" },
+      { text: "Technologies", route: "/team" },
+    ],
 
     showScrollButton: false,
     valid: true,
@@ -518,10 +550,6 @@ export default {
   }),
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
-
-    // this.isSmallScreen = this.$vuetify.breakpoint.smAndDown;
-    // window.addEventListener("resize", this.updateScreenSize);
-    // console.log("Initial screen size:", this.isSmallScreen);
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -612,6 +640,13 @@ div.container {
   text-align: center;
   max-width: 70%;
 }
+.visibility-item1,
+.visibility-item2 {
+  display: block;
+}
+.visibility-item3 {
+  display: none;
+}
 .section4 div.container {
   text-align: center;
   max-width: 60%;
@@ -624,13 +659,20 @@ div.container {
 .row {
   text-align: center;
 }
-
+.v-toolbar__title {
+  width: 200px;
+}
 .v-application a {
   color: #000;
   font-size: 0.8rem;
 }
-
-.v-app-bar {
+.v-sheet.v-toolbar:not(.v-sheet--outlined) {
+  box-shadow: none;
+}
+.v-sheet.v-app-bar.v-toolbar:not(.v-sheet--outlined) {
+  box-shadow: none;
+}
+.v-sheet.theme--light.v-toolbar.v-app-bar {
   height: 64px;
   margin: auto;
   transform: translateY(0px);
@@ -832,6 +874,12 @@ form.v-form .row {
 }
 
 @media screen and (max-width: 960px) {
+  .visibility-item1 {
+    display: none;
+  }
+  .visibility-item3 {
+    display: block;
+  }
   .greetings div.v-image.v-responsive.theme--light {
     width: 500px;
   }
@@ -876,6 +924,10 @@ form.v-form .row {
   }
 }
 @media screen and (max-width: 760px) {
+  .visibility-item2 {
+    display: none;
+  }
+
   .section1 div.v-image.v-responsive.profile-img1.theme--light {
     width: 600px;
   }
@@ -957,7 +1009,10 @@ form.v-form .row {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    margin: 2rem;
+    margin: 0.5rem 0;
+  }
+  .v-application .pt-4 {
+    padding-top: 0px !important;
   }
 }
 @media screen and (max-width: 460px) {
@@ -968,7 +1023,7 @@ form.v-form .row {
     min-width: 180px;
   }
   .section5 div.v-image.v-responsive.theme--light {
-    width: 350px;
+    width: 380px;
     height: 280px;
   }
   .green-light-bold {
@@ -981,7 +1036,7 @@ form.v-form .row {
     font-size: 1.4rem;
   }
 }
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 390px) {
   .section5 div.v-image.v-responsive.theme--light {
     width: 250px;
     height: auto;
