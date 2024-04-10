@@ -1,58 +1,67 @@
 <template>
-  <v-main class="main">
-    <v-container-fluid>
-      <nav>
-        <v-app-bar class="px-2 mx-6 mt-5 mt-md-3 mx-md-auto v-app-bar--fixed">
-          <v-toolbar-title>Sandali Singh</v-toolbar-title>
-          <v-spacer></v-spacer>
-          <v-tabs class="visibility-item1">
-            <v-tab><a @click="scrollToSection('about')">About</a></v-tab>
-            <v-tab><a @click="scrollToSection('teck')">Technologies</a></v-tab>
-            <v-tab><a @click="scrollToSection('projects')">Projects</a></v-tab>
-            <v-tab
-              ><a @click="scrollToSection('experience')">Experience</a></v-tab
-            >
-          </v-tabs>
-          <v-btn rounded class="action_btn visibility-item2">
-            <span
-              ><a @click="scrollToSection('hire')" class="white--text"
-                >Hire me!
-              </a></span
-            >
-          </v-btn>
-
-          <!-- <v-menu offset-y transition="slide-x-transition" :rounded="rounded">
-            <template v-slot:activator="{ on, attrs }"> -->
-          <v-navigation-drawer v-model="drawer" class="primary">
-            <v-app-bar-nav-icon
-              @click.stop="drawer = !drawer"
-              v-bind="attrs"
-              v-on="on"
-              class="visibility-item3"
-            ></v-app-bar-nav-icon>
-            <!-- </template> -->
-            <v-list>
-              <v-list-item
-                v-for="link in links"
-                :key="link.text"
-                router
-                :to="link.route"
+  <v-container-fluid>
+    <nav>
+      <v-snackbar v-model="snackbar" :timeout="3000" top color="grey">
+        <span>Awesome! message send successfully😇 </span>
+        <v-btn text color="white" @click="snackbar = false">Close</v-btn>
+      </v-snackbar>
+      <v-app-bar class="px-2 mx-6 mt-6 mt-md-3 mx-md-auto v-app-bar--fixed">
+        <v-toolbar-title>Sandali Singh</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-tabs class="visibility-item1">
+          <v-tab><a @click="scrollToSection('about')">About</a></v-tab>
+          <v-tab><a @click="scrollToSection('teck')">Technologies</a></v-tab>
+          <v-tab><a @click="scrollToSection('projects')">Projects</a></v-tab>
+          <v-tab
+            ><a @click="scrollToSection('experience')">Experience</a></v-tab
+          >
+        </v-tabs>
+        <v-btn rounded class="action_btn visibility-item2">
+          <span
+            ><a @click="scrollToSection('hire')" class="white--text"
+              >Hire me!
+            </a></span
+          >
+        </v-btn>
+        <v-app-bar-nav-icon
+          @click.stop="drawer = !drawer"
+          class="visibility-item3"
+        ></v-app-bar-nav-icon>
+      </v-app-bar>
+      <v-navigation-drawer v-model="drawer" fixed temporary fixed-drawer>
+        <v-list>
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title class="text-h5">
+                Sandali Singh
+              </v-list-item-title>
+              <v-list-item-subtitle
+                >sandalisingh1270@gmail.com</v-list-item-subtitle
               >
-                <v-list-item-icon>
-                  <v-icon class="white--text">{{ link.icon }}</v-icon>
-                </v-list-item-icon>
-                <v-list-item>
-                  <v-list-item-title>{{
-                    link.text
-                  }}</v-list-item-title> </v-list-item
-                >v-list-item-content>
-              </v-list-item>
-            </v-list>
-          </v-navigation-drawer>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
 
-          <!-- </v-menu> -->
-        </v-app-bar>
-      </nav>
+        <v-divider></v-divider>
+        <v-list nav dense rounded link>
+          <v-list-item
+            v-for="link in links"
+            :key="link.text"
+            :href="link.route"
+          >
+            <v-list-item-icon>
+              <v-icon>{{ link.icon }}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>
+                {{ link.text }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+    </nav>
+    <v-main class="main">
       <v-row class="section1" id="home">
         <v-col col="12" md="12" sm="12">
           <h4>
@@ -61,10 +70,10 @@
           </h4>
           <div class="greetings">
             <v-img
-              src="../assets/images/Group 6385.webp"
+              src="../assets/images/Group 6398.svg"
               alt="Greetings-image"
               height="auto"
-              max-width="700"
+              max-width="600"
             ></v-img>
           </div>
           <div class="know-block">
@@ -98,7 +107,7 @@
 
       <v-row class="section2" id="about">
         <v-col col="12" md="12" sm="12">
-          <v-container class="blue">
+          <v-container>
             <p class="mt-15 pt-15">
               Welcome to my digital realm! I'm Sandali singh, a freshly minted
               MCA graduate, fueled by curiosity and driven by innovation,with a
@@ -138,7 +147,7 @@
       </v-row>
       <v-row class="section3" id="teck">
         <v-col col="12" md="12" sm="12">
-          <v-container class="teck-block align-center mt-10 green">
+          <v-container class="teck-block align-center mt-10">
             <p class="green-dark">Technologies, I’m working with</p>
             <h2 class="mb-5">Got a tech challenge? I code the answer.</h2>
             <div class="teck-stack">
@@ -325,7 +334,7 @@
       </v-row>
       <v-row class="section4" id="projects">
         <v-col col="12" md="12" sm="12">
-          <v-container class="mt-15 pink">
+          <v-container class="mt-15">
             <p class="green-dark">Projects</p>
             <h2>I Build Magical products (Like this Website)</h2>
             <div class="cards">
@@ -354,24 +363,24 @@
       </v-row>
       <v-row class="section5" id="experience">
         <v-col col="12" md="12" sm="12">
-          <v-container class="red">
+          <v-container>
             <p class="green-dark">Experiences</p>
             <h2>Life is all about Experiences, Isn't it?</h2>
             <div class="experience-box">
               <div class="box-1">
                 <h4 class="mr-6">Capzow</h4>
-                <p class="mt-4">SDE Intern</p>
+                <p class="mt-5">SDE Intern</p>
               </div>
 
               <v-spacer></v-spacer>
-              <p class="mt-4">January 2024 - Current</p>
+              <p class="mt-5">January 2024 - Current</p>
             </div>
             <div class="group-img">
               <v-img
-                class="ma-3"
+                class="ma-3 group-img"
                 src="../assets/images/Group-img.webp"
                 alt="group image"
-                max-height="auto"
+                max-height="460"
                 max-width="1024"
               ></v-img>
             </div>
@@ -380,11 +389,11 @@
       </v-row>
       <v-row class="section6" id="hire">
         <v-col col="12" md="12" sm="12">
-          <v-container class="yellow">
+          <v-container pt-15>
             <p class="green-light-bold">Let’s Connect</p>
             <h2 class="green-light-big">Hire me to code your Vision</h2>
 
-            <v-form v-model="valid">
+            <v-form v-model="valid" ref="form">
               <v-row>
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
@@ -469,26 +478,26 @@
           </div>
         </v-col>
       </v-row>
-    </v-container-fluid>
-  </v-main>
+    </v-main>
+  </v-container-fluid>
 </template>
 
 <script>
-// import { db } from "@/fb";
-// import { onSnapshot, collection } from "firebase/firestore";
 import { addData } from "@/services/app.serviceAdd";
 
 export default {
   name: "HomePage",
   data: () => ({
     drawer: false,
-
+    snackbar: false,
+    loading: false,
     links: [
-      { icon: "mdi-home", text: "Home", route: "/" },
-      { icon: "mdi-account", text: "About", route: "/projects" },
-      { icon: "mdi-account", text: "Technologies", route: "/team" },
-      { icon: "mdi-account", text: "Projects", route: "/team" },
-      { text: "Technologies", route: "/team" },
+      { icon: "mdi-home-outline", text: "Home", route: "#home" },
+      { icon: "mdi-account-heart", text: "About", route: "#about" },
+      { icon: "mdi-skull-outline", text: "Technologies", route: "#teck" },
+      { icon: "mdi-format-float-right", text: "Projects", route: "#projects" },
+      { icon: "mdi-weight-lifter", text: "Experience", route: "#experience" },
+      { icon: "mdi-account-switch", text: "Hire me", route: "#connect" },
     ],
 
     showScrollButton: false,
@@ -548,6 +557,7 @@ export default {
       },
     ],
   }),
+
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
   },
@@ -580,51 +590,46 @@ export default {
       });
     },
     handleScroll() {
-      this.showScrollButton = window.scrollY > 100; // Change 100 to the scroll position you want
+      this.showScrollButton = window.scrollY > 100;
     },
-    submit() {
+    async submit() {
       if (this.$refs.form.validate()) {
         this.loading = true;
-        //console.log(this.title, this.content);
+        console.log(this.name, this.email, this.message);
         const message = {
           name: this.name,
           email: this.email,
           message: this.message,
         };
-        addData(message).then(() => {
-          this.loading = false;
-          this.dialog = false;
-          this.$emit("messageAdded");
-        });
+        try {
+          await addData(message).then(() => {
+            this.loading = false;
+            this.resetForm();
+            this.snackbar = true;
+            this.$emit("messageAdded");
+          });
+        } catch (error) {
+          console.error("Error sending message:", error);
+        }
       }
     },
-    // updateScreenSize() {
-    //   this.isSmallScreen = this.$vuetify.breakpoint.smAndDown;
-    //   console.log("Updated screen size:", this.isSmallScreen);
-    // },
+    resetForm() {
+      this.name = "";
+      this.email = "";
+      this.message = "";
+      this.$refs.form.resetValidation();
+    },
   },
-  // beforeDestroy() {
-  //   window.removeEventListener("resize", this.updateScreenSize);
-  // },
-  // created() {
-  //   onSnapshot(collection(db, "Databook"), (snapshot) => {
-  //     snapshot.docChanges().forEach((change) => {
-  //       if (change.type === "added") {
-  //         this.projects.push({
-  //           ...change.doc.data(),
-  //           id: change.doc.id,
-  //         });
-  //       }
-  //     });
-  //   });
-  // },
 };
 </script>
 
 <style scoped>
 * {
   box-sizing: border-box;
-  /* font-family: "Montserrat", sans-serif; */
+}
+.main {
+  margin: 0;
+  padding: 0;
 }
 body {
   scroll-behavior: smooth;
@@ -655,12 +660,22 @@ div.container {
 .section6 div.container {
   text-align: center;
   max-width: 65%;
+  min-height: 75vh;
 }
 .row {
   text-align: center;
 }
 .v-toolbar__title {
-  width: 200px;
+  width: 450px;
+}
+.v-navigation-drawer {
+  height: 100vh;
+  top: 0px;
+  transform: translateX(0%);
+  width: 300px !important;
+  backdrop-filter: saturate(100%) blur(10px) !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  border: 1px solid rgb(218, 220, 224) !important;
 }
 .v-application a {
   color: #000;
@@ -672,6 +687,9 @@ div.container {
 .v-sheet.v-app-bar.v-toolbar:not(.v-sheet--outlined) {
   box-shadow: none;
 }
+.group-img {
+  border-radius: 15px;
+}
 .v-sheet.theme--light.v-toolbar.v-app-bar {
   height: 64px;
   margin: auto;
@@ -682,7 +700,6 @@ div.container {
   max-width: 1024px;
   border-radius: 25px;
   backdrop-filter: saturate(100%) blur(10px);
-  background-color: rgba(255, 255, 255, 0.6);
   background-color: rgba(191, 218, 158, 50%);
   border: 1px solid rgb(218, 220, 224) !important;
 }
@@ -719,7 +736,7 @@ h2 {
 }
 .section1 {
   position: relative;
-  margin-top: 5rem;
+  margin-top: 10rem;
   min-height: 15%;
 }
 .section1 .greetings {
@@ -860,6 +877,9 @@ form.v-form .row {
   .section4 div.container {
     max-width: 75%;
   }
+  .section2 {
+    min-height: 17%;
+  }
 }
 @media screen and (max-width: 1280px) {
   .section5 div.v-image.v-responsive.theme--light {
@@ -871,6 +891,9 @@ form.v-form .row {
   .v-application .mt-15 {
     margin-top: 0 !important;
   }
+  .section2 {
+    min-height: 10%;
+  }
 }
 
 @media screen and (max-width: 960px) {
@@ -880,8 +903,9 @@ form.v-form .row {
   .visibility-item3 {
     display: block;
   }
+
   .greetings div.v-image.v-responsive.theme--light {
-    width: 500px;
+    max-width: 500px;
   }
   .section1 div.v-image.v-responsive.profile-img1.theme--light {
     width: 800px;
@@ -968,7 +992,7 @@ form.v-form .row {
   .v-application .mr-6 {
     margin-right: 0px !important;
   }
-  .v-application .mt-4 {
+  .v-application .mt-5 {
     margin-top: 0px !important;
   }
   .v-application .mt-15 {
