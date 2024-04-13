@@ -1,7 +1,7 @@
 import { db } from "@/fb";
 import { collection, addDoc } from "firebase/firestore";
 
-let collection_name = "Databook";
+let collection_name = "databook";
 
 async function addData(data) {
   try {

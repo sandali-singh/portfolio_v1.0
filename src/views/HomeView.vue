@@ -66,14 +66,24 @@
         <v-col col="12" md="12" sm="12">
           <h4>
             Hola amigos! <br />
-            I’m Sandali Singh a techy &
+            I’m
+            <h1>Sandali Singh</h1>
+            a techy &
           </h4>
           <div class="greetings">
             <v-img
+              class="greet-img1"
               src="../assets/images/Group 6398.svg"
               alt="Greetings-image"
               height="auto"
               max-width="600"
+            ></v-img>
+            <v-img
+              class="greet-img2"
+              src="../assets/images/Group 6399.svg"
+              alt="Greetings-image"
+              height="auto"
+              max-width="400"
             ></v-img>
           </div>
           <div class="know-block">
@@ -132,7 +142,7 @@
               <a href="https://twitter.com/_Sandali_Singh_">
                 <v-icon color="black">mdi-twitter</v-icon>
               </a>
-              <a href="/">
+              <a href="https://www.instagram.com/_sandali_singh__">
                 <v-icon color="black">mdi-instagram</v-icon>
               </a>
               <a href="mailto: sandalisingh1270@gmail.com">
@@ -457,7 +467,7 @@
             <a href="https://twitter.com/_Sandali_Singh_">
               <v-icon color="black">mdi-twitter</v-icon>
             </a>
-            <a href="/">
+            <a href="https://www.instagram.com/_sandali_singh__">
               <v-icon color="black">mdi-instagram</v-icon>
             </a>
             <a href="mailto: sandalisingh1270@gmail.com">
@@ -494,10 +504,10 @@ export default {
     links: [
       { icon: "mdi-home-outline", text: "Home", route: "#home" },
       { icon: "mdi-account-heart", text: "About", route: "#about" },
-      { icon: "mdi-skull-outline", text: "Technologies", route: "#teck" },
+      { icon: "mdi-laptop", text: "Technologies", route: "#teck" },
       { icon: "mdi-format-float-right", text: "Projects", route: "#projects" },
       { icon: "mdi-weight-lifter", text: "Experience", route: "#experience" },
-      { icon: "mdi-account-switch", text: "Hire me", route: "#connect" },
+      { icon: "mdi-handshake-outline", text: "Hire me", route: "#connect" },
     ],
 
     showScrollButton: false,
@@ -636,7 +646,7 @@ body {
 }
 .scroll-to-top {
   position: fixed;
-  bottom: 10%;
+  bottom: 12%;
   right: 3%;
   transform: translateX(-50%);
   display: block;
@@ -719,6 +729,11 @@ h4 {
   font-size: 1.5rem;
   font-weight: 600;
 }
+h1 {
+  font-size: 1.5rem;
+  display: inline-block;
+  font-weight: 800;
+}
 h2 {
   font-size: 2.5rem;
   font-weight: 600;
@@ -758,7 +773,12 @@ h2 {
   padding: 7rem 0 3rem;
   min-height: 15%;
 }
-
+.greet-img1 {
+  display: block;
+}
+.greet-img2 {
+  display: none;
+}
 .profile-img1 {
   display: block;
   position: absolute;
@@ -904,9 +924,6 @@ form.v-form .row {
     display: block;
   }
 
-  .greetings div.v-image.v-responsive.theme--light {
-    max-width: 500px;
-  }
   .section1 div.v-image.v-responsive.profile-img1.theme--light {
     width: 800px;
   }
@@ -957,11 +974,14 @@ form.v-form .row {
   }
 }
 @media screen and (max-width: 680px) {
-  .greetings div.v-image.v-responsive.theme--light {
-    width: 400px;
+  .greet-img1 {
+    display: none;
+  }
+  .greet-img2 {
+    display: block;
   }
   .section1 {
-    min-height: 15%;
+    min-height: 17%;
   }
   .section1 div.v-image.v-responsive.profile-img1.theme--light {
     display: none;
@@ -998,7 +1018,8 @@ form.v-form .row {
   .v-application .mt-15 {
     margin-top: 20px !important;
   }
-  h4 {
+  h4,
+  h1 {
     font-size: 1.2rem;
   }
 }
@@ -1009,9 +1030,7 @@ form.v-form .row {
   .section6 div.container {
     max-width: 80%;
   }
-  .greetings div.v-image.v-responsive.theme--light {
-    width: 280px;
-  }
+
   .section5 div.v-image.v-responsive.theme--light {
     width: 400px;
     height: 300px;
