@@ -93,6 +93,7 @@
               </a>
             </v-btn>
             &nbsp;&nbsp; &nbsp;
+<<<<<<< HEAD
 
             <a @click="scrollToSection('about')">
               <span class="green-light pt-4">
@@ -100,6 +101,12 @@
                 <v-icon small class="green-light">mdi-arrow-right</v-icon>
               </span>
             </a>
+=======
+            <p class="green-light pt-4">
+              Know more about me
+              <v-icon small class="green-light">mdi-arrow-right</v-icon>
+            </p>
+>>>>>>> a01001b137642a0216ab9939d2d1d8b23cdec215
           </div>
           <v-img
             class="profile-img1"
@@ -533,12 +540,15 @@ export default {
     ],
     cardData1: [
       {
+<<<<<<< HEAD
         imageUrl: require("../assets/images/GoogleIOExtended.webp"),
         title: "Google IOX Extended",
         subtitle: "VueJs.JavaScript.Firebase.Nuxt",
         url: "https://github.com/oss-labs/iox24-webapp",
       },
       {
+=======
+>>>>>>> a01001b137642a0216ab9939d2d1d8b23cdec215
         imageUrl: require("../assets/images/react-app.webp"),
         title: "React-QuizApp",
         subtitle: "React.JavaScript.Html.Css",
@@ -574,12 +584,15 @@ export default {
         subtitle: "JavaScript.Html.Css",
         url: "https://sandali-singh.github.io/omnifood-project/",
       },
+<<<<<<< HEAD
       {
         imageUrl: require("../assets/images/Natours.webp"),
         title: "Natours-WebApp",
         subtitle: "JavaScript.Html.Css.Sass",
         url: "https://github.com/sandali-singh/Natours-sassProject",
       },
+=======
+>>>>>>> a01001b137642a0216ab9939d2d1d8b23cdec215
     ],
   }),
 
@@ -656,10 +669,13 @@ export default {
   margin: 0;
   padding: 0;
 }
+<<<<<<< HEAD
 body,
 html {
   overflow-x: hidden;
 }
+=======
+>>>>>>> a01001b137642a0216ab9939d2d1d8b23cdec215
 body {
   scroll-behavior: smooth;
 }
@@ -689,7 +705,11 @@ div.container {
 .section6 div.container {
   text-align: center;
   max-width: 65%;
+<<<<<<< HEAD
   min-height: 45vh;
+=======
+  min-height: 75vh;
+>>>>>>> a01001b137642a0216ab9939d2d1d8b23cdec215
 }
 .row {
   text-align: center;
@@ -816,7 +836,10 @@ h2 {
 }
 .green-light {
   color: #3f682a;
+<<<<<<< HEAD
   font-weight: 600;
+=======
+>>>>>>> a01001b137642a0216ab9939d2d1d8b23cdec215
 }
 .green-light-bold {
   color: #3f682a;
