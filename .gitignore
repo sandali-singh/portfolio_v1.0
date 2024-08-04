@@ -3,6 +3,18 @@ node_modules
 /dist
 
 
+# Environment Variables
+.env
+
+# Firebase Cache
+.firebase/
+fb.js
+
+.firebaserc
+
+
+
+
 # local env files
 .env.local
 .env.*.local
