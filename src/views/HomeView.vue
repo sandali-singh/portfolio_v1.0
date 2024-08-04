@@ -685,7 +685,6 @@ div.container {
   text-align: center;
   max-width: 60%;
 }
-
 .section6 div.container {
   text-align: center;
   max-width: 65%;
@@ -910,7 +909,6 @@ form.v-form .row {
   background-color: #dce7ce;
   padding: 1rem;
 }
-
 /*  ///////////////////// media query ////////////////   */
 
 @media screen and (max-width: 1560px) {
